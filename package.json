@@ -19,6 +19,17 @@
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@types/axios": "^0.14.0",
+    "axios": "^1.2.0-alpha.1",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.5",
+    "ng": "^0.0.0",
+    "ngx-toastr": "^17.0.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -28,9 +39,9 @@
     "@angular/cli": "~8.3.8",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~8.2.9",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -40,8 +51,10 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.3.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "^5.0.4"
   }
 }

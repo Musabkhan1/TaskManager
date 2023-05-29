@@ -14,5 +14,9 @@
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts"
+  ],
+  "styles": [
+    "node_modules/ngx-toastr/toastr.css",
+    "src/styles.css"
   ]
 }

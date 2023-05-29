@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&family=Varela+Round&display=swap');
+
+
+h2 {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.task-manager-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.task-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.margin-left {
+    margin-left: 10px;
+}
+
+.margin-right {
+    margin-right: 10px;
+}
+
+.card {
+    background-color: #152733;
+}
+
+.btn-1 {
+    border-radius: 10px;
+    border-bottom: 4px solid #FFC107;
+}
+
+.btn-2 {
+    border-radius: 10px;
+    border-bottom: 4px solid #ffffff;
+}
+
+.btn-3 {
+    border-bottom: 4px solid #ffffff;
+}
+
+.btn-2:hover {
+    background-color: transparent;
+    border: 1px solid #FFC107;
+    color: #FFC107;
+    border-bottom: 4px solid #FFC107;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    grid-column: span 2;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: #337ab7;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.task-list {
+    width: 100%;
+}
+
+.task-list th,
+.task-list td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: none;
+    color: #ffffff;
+}
+
+.task-list th {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #FFC107;
+}
+
+.task-list td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+textarea:focus,
+select:focus,
+input:focus {
+    outline: 0 none !important;
+    border-color: rgba(86, 125, 241, 0.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba(86, 125, 241, 0.25) !important;
+}
+
+input,
+textarea {
+    border-color: rgb(226, 226, 226);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #000000;
+}
+
+.sort-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.sort-icon.asc {
+    background-color: green;
+    transform: rotate(45deg);
+}
+
+.sort-icon.desc {
+    background-color: red;
+    transform: rotate(-45deg);
+}

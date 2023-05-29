@@ -1,0 +1,173 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 my-4 py-2 form-container">
+            <div class="card border-warning">
+                <h2 class="text-center text-light pt-4">Create Task</h2>
+                <form novalidate>
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Title" [(ngModel)]="newTask.title"
+                                    [ngModelOptions]="{standalone: true}" required>
+                            </div>
+                            <div class="alert-danger text-danger" *ngIf="newTask.title===''">*Please Enter Title</div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center py-2">
+                        <div class="col-10">
+                            <div class="form-group">
+                                <textarea name="description" id="desc" cols="30" rows="5" placeholder="Description"
+                                    class="rounded" [(ngModel)]="newTask.description"
+                                    [ngModelOptions]="{standalone: true}" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center py-2">
+                        <div class="col-5">
+                            <div class="form-group">
+                                <label for="priority" class="text-light">Priority</label>
+                                <select id="priority" [(ngModel)]="newTask.priority"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <option label="Low" value=1>Low</option>
+                                    <option label="Medium" value=2>Medium</option>
+                                    <option label="High" value=3>High</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-group">
+                                <label class="text-light">Date</label>
+                                <input type="date" class="form-control" [(ngModel)]="newTask.date"
+                                    [ngModelOptions]="{standalone: true}" required>
+                            </div>
+                            <div class="alert-danger text-danger" *ngIf="newTask.date===''">*Please Select
+                                Date</div>
+
+                        </div>
+                    </div>
+                    <div class="row justify-content-center py-2">
+                        <div class="col-5">
+                            <div class="form-group py-4">
+                                <button class="btn btn-outline-warning btn-block btn-1" (click)="reset()">Reset</button>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-group py-4">
+                                <button class="btn btn-warning btn-block btn-2" (click)="addTask()">Add Task</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-12 my-4 py-2">
+            <div class="div d-flex flex-column">
+                <h2 class="text-warning">Task List</h2>
+                <div class="row py-3">
+                    <div class="col-lg-2 col-sm-12 mt-1">
+                        <div class="form-group">
+                            <select id="priority" class="py-2" [(ngModel)]="selectPriority"
+                                [ngModelOptions]="{standalone: true}" placeholder="Select priority">
+                                <option selected disabled value="">Priority</option>
+                                <option label="Low" value=1>Low</option>
+                                <option label="Medium" value=2>Medium</option>
+                                <option label="High" value=3>High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-12 mt-1">
+                        <div class="form-group">
+                            <select id="priority" class="py-2" [(ngModel)]="selectStatus"
+                                [ngModelOptions]="{standalone: true}" aria-placeholder="Select Status">
+                                <option for="status" selected disabled value="">Status</option>
+                                <option label="DONE" value=1>Done</option>
+                                <option label="PENDING" value=2>Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-12 mt-1">
+                        <div class="form-group">
+                            <button class="btn btn-outline-light btn-block btn-3" (click)="getTasks()">Filter</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table task-list">
+                        <thead>
+                            <tr>
+                                <th class="py-4">Id</th>
+                                <th class="py-4">Title</th>
+                                <th class="py-4">Description</th>
+                                <th class="py-3">
+                                    Date
+                                    <button (click)="toggleDateSortDirection()" class="btn text-light">
+                                        <i
+                                            [ngClass]="isDateAscending ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
+                                    </button>
+                                </th>
+                                <th class="py-3">
+                                    Priority
+                                    <button (click)="togglePrioritySortDirection()" class="btn text-light">
+                                        <i
+                                            [ngClass]="isPriorityAscending ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
+                                    </button>
+                                </th>
+                                <th class="py-4">
+                                    Status
+                                </th>
+                                <th class="py-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let task of tasks">
+                                <td>{{ task.id }}</td>
+                                <td>{{ task.title }}</td>
+                                <td>{{ task.description }}</td>
+                                <td>{{ task.date }}</td>
+                                <!-- <td >
+                                <ng-container *ngIf="task.priority === '1'; else mediumHighPriority">Low</ng-container>
+                                <ng-template #mediumHighPriority>
+                                    <ng-container *ngIf="task.priority === '2'">Medium</ng-container>
+                                    <ng-container *ngIf="task.priority === '3'">High</ng-container>
+                                </ng-template>
+                            </td> -->
+                                <td>
+                                    <ng-container *ngIf="task.priority === '1'; else mediumHighPriority">
+                                        <span class="text-info">Low</span>
+                                    </ng-container>
+                                    <ng-template #mediumHighPriority>
+                                        <ng-container *ngIf="task.priority === '2'">
+                                            <span class="text-warning">Medium</span>
+                                        </ng-container>
+                                        <ng-container *ngIf="task.priority === '3'">
+                                            <span class="text-danger">High</span>
+                                        </ng-container>
+                                    </ng-template>
+                                </td>
+                                <td>
+                                    <ng-container *ngIf="task.status === 'DONE'; else pendingStatus">
+
+                                        <span class="text-success">Done</span>
+                                    </ng-container>
+                                    <ng-template #pendingStatus>
+                                        <span class="text-danger">Pending</span>
+                                    </ng-template>
+                                </td>
+                                <td>
+                                    <button (click)="updateTask(task.id)"
+                                        class="btn btn-outline-warning btn-block btn-1"
+                                        [disabled]="task.status === 'DONE'">Done</button>
+                                    <button (click)="deleteTask(task.id)"
+                                        class="btn btn-warning btn-block btn-2">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
